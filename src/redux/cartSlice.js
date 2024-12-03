@@ -124,6 +124,14 @@ const cartSlice = createSlice({
 			});
 			state.total = total;
 		},
+
+		updateQuantity: (state, action) => {
+			const { _id, qty } = action.payload;
+			const item = state.cartItems.find((item) => item._id === _id);
+			if (item) {
+				item.qty = qty;
+			}
+		},
 	},
 });
 
@@ -134,5 +142,6 @@ export const {
 	increase,
 	decrease,
 	calculateTotals,
+	updateQuantity
 } = cartSlice.actions;
 export default cartSlice.reducer;

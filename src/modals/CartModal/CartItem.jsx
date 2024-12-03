@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import stock from './../assets/stock.svg';
 import trash from './../assets/trash.svg';
-import { decrease, increase, removeFromCart } from '@redux/cartSlice';
+import { decrease, increase, removeFromCart, updateQuantity } from '@redux/cartSlice';
 import styles from '@styles';
+import './styles.css'
 
 const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 	const dispatch = useDispatch();
@@ -75,7 +76,16 @@ const CartItem = ({ _id, title_ukr, author, coverImageLink = [], price }) => {
 
 					{/* quantity */}
 					<div className='flex items-center justify-center w-8 h-8 md:w-12 md:h-12 border-solid border-[1px] border-grey rounded-lg'>
-						{qty}
+						<input
+							type='number'
+							min='1'
+							value={qty}
+							onChange={(e) => {
+								const newQty = Math.max(1, Number(e.target.value) || 1); 
+								dispatch(updateQuantity({ _id, qty: newQty }));
+							}}
+							className='text-center w-full h-full outline-none appearance-none'
+						/>
 					</div>
 
 					{/* increase */}
