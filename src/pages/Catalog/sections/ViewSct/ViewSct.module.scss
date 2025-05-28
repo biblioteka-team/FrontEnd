@@ -1,0 +1,31 @@
+@use 'react-responsive-tools' as *;
+
+.ViewSct {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  padding: 16px;
+
+  @include for-md {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    padding: 24px;
+  }
+
+  @include for-ltl {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 32px;
+  }
+}
+
+.item {
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+
+  img {
+    height: 280px;
+  }
+}

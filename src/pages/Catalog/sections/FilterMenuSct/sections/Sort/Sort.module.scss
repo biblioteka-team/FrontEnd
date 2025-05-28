@@ -1,0 +1,103 @@
+@use 'react-responsive-tools' as *;
+
+.Sort {
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid rgba(171, 171, 171, 1);
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: rgba(118, 118, 118, 1);
+
+  &:hover {
+    border-color: #999;
+  }
+}
+
+.arrow {
+  transition: transform 0.2s ease;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid rgba(171, 171, 171, 1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+
+  transform-origin: top center;
+  animation: dropDown 0.2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes dropDown {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+.option {
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  color: rgba(118, 118, 118, 1);
+
+
+  &:hover {
+    background: #F5F5F5;
+  }
+
+  &.active {
+    background: #FFE566;
+    color: #000;
+  }
+
+  &:first-child {
+    border-radius: 8px 8px 0 0;
+
+    &.active {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+  }
+
+  &:last-child {
+    border-radius: 0 0 8px 8px;
+
+    &.active {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
+}

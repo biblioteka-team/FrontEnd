@@ -55,7 +55,7 @@ export function getGetAllBooksOpts(
  * @example
  * const { data, isLoading, isError } = useGetAllBooksQry({
  *   page: 1,
- *   pageSize: 4,
+ *   size: 4,
  *   sorting: 'id:desc',
  *   filters: {
  *     id: {

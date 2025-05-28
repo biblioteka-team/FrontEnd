@@ -1,0 +1,25 @@
+@use 'react-responsive-tools' as *;
+
+@layer section {
+  .FilterMenuSct {
+    @include for-md {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .actions {
+      margin-top: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+
+      @include for-md {
+        justify-content: flex-start;
+        gap: 16px;
+      }
+    }
+
+  }
+}

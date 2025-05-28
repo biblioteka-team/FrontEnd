@@ -16,20 +16,38 @@ export interface TResponseError {
 export type TResponse<T = undefined> = TResponseSuccess<T> | TResponseError;
 
 export type TFilterOperator =
-  | '$eq' // Рівний
-  | '$eqi' // Рівно (без врахування регістру)
-  | '$lt' // Менше, ніж
-  | '$lte' // Менше або рівно
-  | '$gt' // Більше ніж
-  | '$gte' // Більше або рівно
-  | '$in' // Входить в масив
-  | '$contains' // Містить
-  | '$icontains' // Містить (без врахування регістру)
-  | '$null' // null
-  | '$startswith' // Починається з
-  | '$startsWithi' // Починається з (без врахування регістру)
-  | '$endsWith' // Закінчується на
-  | '$endsWithi'; // Закінчується на (без врахування регістру)
+   | 'ROMANCE'
+   | 'HISTORICAL'
+   | 'DETECTIVE'
+   | 'SCIFI'
+   | 'FANTASY'
+   | 'PSYCHOLOGICAL'
+   | 'POETRY'
+   | 'BIOGRAPHY'
+   | 'HISTORY'
+   | 'SCIENCE'
+   | 'PHILOSOPHY'
+   | 'PSYCHOLOGY'
+   | 'BUSINESS'
+   | 'MYSTICISM'
+   | 'TRAVEL'
+   | 'COOKING'
+   | 'FAIRY_TALES'
+   | 'PRESCHOOL'
+   | 'SCHOOL_AGE'
+   | 'TEEN'
+   | 'EDUCATIONAL_KIDS'
+   | 'PRESCHOOL_EDU'
+   | 'TEXTBOOKS'
+   | 'MANUALS'
+   | 'MOTIVATION'
+   | 'HEALTH'
+   | 'SELF_PSYCHOLOGY'
+   | 'MEDICAL'
+   | 'LAW'
+   | 'TECHNICAL'
+   | 'IT'
+   | 'ARTS_CULTURE'
 
 export type TAPIFilters<T> = {
   [K in keyof T]?: {
@@ -42,7 +60,12 @@ export type TMetaParamsKeys = keyof TListMeta<any>;
 
 export interface TListMeta<T> {
   page?: number; // Номер поточної сторінки
-  pageSize?: number; // Кількість елементів на сторінці
-  sorting?: string; // Сортування за спаданням desc або за зростанням asc
-  filters?: TAPIFilters<T>; // Фільтри для даних
+  size?: number; // Кількість елементів на сторінці
+  sortBy?: string; // Сортування за спаданням desc або за зростанням asc
+  title?: string; // Отримання даних за назвою
+  author?: string; // Отримання даних за автором
+  category?: string; // Отримання даних за категорією
+  price?: number;  // Отримання даних за ціною
+  language?: string;  // Отримання даних за мовою
+  subcategories?: TAPIFilters<T>; // Фільтри для даних
 }
