@@ -2,7 +2,9 @@
 import ProductImageGallery from 'components/ProductImageGallery/productImageGallery'
 import { useState } from 'react'
 import Modal from 'react-modal'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../../redux/Cart'
 import { useGetBookInfoQuery } from '../../redux/productPageSlice'
 import Button from '../../ui/Button/index.jsx'
 import IconStatusFalse from './ProductStatusItemFalse.svg'
@@ -22,11 +24,23 @@ const ProductPage = () => {
 	const handleCloseModal = () => {
 		setIsOpen(false)
 	}
+	
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
 	if (isLoading) return <div className='h-screen'>Loading...</div>
 	if (error) return <div className='h-screen'>Error: {error.message}</div>
 
 	const book = data
 	console.log('book', book)
+
+	const handleAddToCart = () => {
+		dispatch(addToCart(book))
+		navigate('/checkout');
+	}
+
+	const handleCartOnly = () => dispatch(addToCart(book))
+
 
 	let infoObj = {
 		'Мова видання': book.language,
@@ -51,7 +65,7 @@ const ProductPage = () => {
 				<ProductImageGallery imageSrc={book.images?.map(img => img.url) || []} />
 			</Modal>
 
-			<div className={styles.productItem } >
+			<div className={styles.productItem} >
 				<div className={styles.productTitle}>{book.title}</div>
 				<div className={styles.productAuthor}>{book.author}</div>
 
@@ -79,8 +93,16 @@ const ProductPage = () => {
 				</div>
 
 				<div className={styles.productBtns}>
-					<Button label='В кошик' className='bg-button' />
-					<Button label='Оплатити' className='bg-buttonB border-none' />
+					<Button
+						label='В кошик'
+						className='bg-button'
+						onClick={handleCartOnly}
+					/>
+					<Button
+						label='Оплатити'
+						className='bg-buttonB border-none'
+						onClick={handleAddToCart}
+					/>
 				</div>
 
 				<div className={styles.productSummary}>
@@ -88,7 +110,7 @@ const ProductPage = () => {
 				</div>
 			</div>
 
-			
+
 		</div>
 	)
 }

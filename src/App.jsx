@@ -8,6 +8,7 @@ import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage/productPage'
 import Sales from './pages/sales/sales'
 import TopBooks from './pages/topBooks/topBooks'
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage.jsx'
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 				<Route path='/special-offers' element={<Sales />} />
 				<Route path='/catalog/:id' element={<ProductPage />} />
 				<Route path='/catalog' element={<Catalog />} />
+				<Route path='/checkout' element={<CheckoutPage />} />
 			</Route>
 			<Route
 				path='*'

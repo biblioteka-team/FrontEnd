@@ -2,6 +2,7 @@ import CartItem from 'components/CartItem'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { calculateTotals, clearCart } from '../../redux/Cart'
 import { RootState } from '../../redux/store'
 import stylesGlobal from '../../style'
@@ -34,6 +35,13 @@ const CartModal = ({ toggleModal }: CartModalProps) => {
   useEffect(() => {
     dispatch(calculateTotals())
   }, [cartItems])
+
+  const navigate = useNavigate()
+
+  const goToCheckoutPage = () => {
+    toggleModal();
+    navigate('/checkout');
+  };
 
   return (
     <motion.div
@@ -80,7 +88,7 @@ const CartModal = ({ toggleModal }: CartModalProps) => {
                   />
                   <Button
                     label='До сплати'
-                    onClick={() => console.log('Proceed to payment')}
+                    onClick={goToCheckoutPage}
                     className={`${stylesGlobal.button} ${styles.cartButton}  ${styles.cartButtonFilled}`}
                   />
                 </div>
