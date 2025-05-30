@@ -2,28 +2,32 @@
 @use '../styles/CarouselSectionsMixins.scss' as *;
 
 //TODO: Remove Important from the code, add layer configuration to the project
-@layer section {
-  .NewArrival {
-    @include section-wrapper;
 
-    .viewAll {
-      @include section-view-all;
-    }
+.NewArrival {
+  @include section-wrapper;
 
-    .header {
-      @include section-header;
-    }
+  .viewAll {
+    @include section-view-all;
+  }
 
-    .title {
-      @include section-title;
-    }
+  .header {
+    @include section-header;
+  }
 
-    .Slider {
-      @include section-slider;
-    }
+  .title {
+    @include section-title;
+  }
 
-    .sliderItem {
-      @include section-slider-item;
-    }
+  .Slider {
+    @include section-slider;
+  }
+
+  .sliderItem {
+    @include section-slider-item;
+  }
+
+  .skeleton {
+    height: 100%;
+    width: 100%;
   }
 }

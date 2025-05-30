@@ -1,28 +1,31 @@
 @use 'react-responsive-tools' as *;
 @use '../styles/CarouselSectionsMixins.scss' as *;
 
-@layer section {
-  .BestSellers {
-    @include section-wrapper;
+.BestSellers {
+  @include section-wrapper;
 
-    .viewAll {
-      @include section-view-all;
-    }
+  .viewAll {
+    @include section-view-all;
+  }
 
-    .header {
-      @include section-header;
-    }
+  .header {
+    @include section-header;
+  }
 
-    .title {
-      @include section-title;
-    }
+  .title {
+    @include section-title;
+  }
 
-    .Slider {
-      @include section-slider;
-    }
+  .Slider {
+    @include section-slider;
+  }
 
-    .sliderItem {
-      @include section-slider-item;
-    }
+  .sliderItem {
+    @include section-slider-item;
+  }
+
+  .skeleton {
+    height: 100%;
+    width: 100%;
   }
 }

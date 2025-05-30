@@ -1,4 +1,5 @@
 import BookPreview from 'components/BookPreview'
+import BookPreviewSkeleton from 'components/BookPreviewSkeleton'
 import MainSlider from 'components/MainSlider'
 import useGetAllBooksBestSellersQry from 'queries/books/useGetAllBooksBestSellersQry'
 import { useBreakpointMF } from 'react-responsive-tools'
@@ -22,26 +23,31 @@ export default function BestSellers() {
     if (isMedium) return 36
     return 0
   }
-  if (isLoading) {
-    return <div className={s.BestSellers}>Loading...</div>
-  }
+
   return <section className={s.BestSellers}> <div className={s.header}>
     <h3 className={s.title}>Бестселери</h3>
     {isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}
   </div>
     <MainSlider itemsToShow={getItemsToShow()} gap={getGap()} className={s.Slider}>
-      {data?.data.content.map(el => (
-        <div className={s.sliderItem} key={el.id}>
-          <BookPreview key={el.id} contextValue={{ offer: el.book }}>
-            <BookPreview.Image className={s.image} />
-            <BookPreview.Title className={s.bookTitle} />
-            <BookPreview.Author className={s.author} />
-            <BookPreview.Price className={s.price} />
-            <BookPreview.AddToCartButton className={s.addToCartBtn} />
-          </BookPreview>
-        </div>
+      {isLoading ? (
+        Array(getItemsToShow()).fill(null).map((_, index) => (
+          <div className={s.sliderItem} key={index}>
+            <BookPreviewSkeleton className={s.skeleton} />
+          </div>
+        ))
+      ) : (
+        data?.data.content.map(el => (
+          <div className={s.sliderItem} key={el.id}>
+            <BookPreview key={el.id} contextValue={{ offer: el.book }}>
+              <BookPreview.Image className={s.image} />
+              <BookPreview.Title className={s.bookTitle} />
+              <BookPreview.Author className={s.author} />
+              <BookPreview.Price className={s.price} />
+              <BookPreview.AddToCartButton className={s.addToCartBtn} />
+            </BookPreview>
+          </div>
 
-      ))}
+        )))}
     </MainSlider>
     {!isMedium && <Link to="/catalog" className={s.viewAll}>Переглянути повністю</Link>}</section>
 }
