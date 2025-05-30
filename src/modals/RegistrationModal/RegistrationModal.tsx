@@ -36,7 +36,17 @@ export default function RegistrationModal({ className = '', toggleModal, toggleF
       onSuccess: (data) => {
         console.log('Registration success:', data)
         console.log('client.AM.token', client.AM.token)
+        const token = data.data.token
 
+        if (token) {
+          // Save token to AuthManager
+          client.AM.login({
+            access: token,
+            refresh: token
+          })
+        }
+        client.setHeader('Authorization', `Bearer ${token}`)
+        window.dispatchEvent(new Event('loginSuccess'))
         setTimeout(() => {
           toggleModal()
         }, 2000)

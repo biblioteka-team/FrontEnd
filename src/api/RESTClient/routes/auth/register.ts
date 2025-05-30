@@ -55,20 +55,24 @@ export async function register(
       signal,
     });
     
-    if (response.data?.data) {
+    console.log('Raw response:', response); // Додайте для дебагу
+    
+    // Перевірте структуру відповіді
+    if (response.data) {
       // Зберігаємо токен через AuthManager
-      (this as any).AM.login(response.data.data);
+      this.AM.login(response.data);
       
-      // Встановлюємо токен в заголовки для наступних запитів
-      this.client.defaults.headers.common.Authorization = `Bearer ${response.data.data.access}`;
+      // Встановлюємо токен в заголовки
+      this.client.defaults.headers.common.Authorization = `Bearer ${response.data.access}`;
     }
     
     return {
       message: response.statusText,
       status: 'OK',
-      data: response.data.data,
+      data: response.data, // Прибираємо .data, оскільки response.data вже містить потрібні дані
     };
   } catch (error: any | TError) {
+    console.error('Registration error:', error); // Додайте для дебагу
     throw {
       message: error.message,
       status: 'Error',
