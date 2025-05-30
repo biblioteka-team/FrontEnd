@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import CartModal from '../../../../../../modals/CartModal/CartModal'
+import {AnimatePresence} from 'framer-motion'
 
 import s from './CartIcon.module.scss'
 const CartIcon = () => {
@@ -11,12 +12,14 @@ const CartIcon = () => {
     const toggleModal = () => {
         setModal(!modal)
     }
-
+    
+    useEffect(() => {
     if (modal) {
         document.body.classList.add('active-modal')
     } else {
         document.body.classList.remove('active-modal')
     }
+}, [modal])
 
     return (
         <div className={s.CartIcon}>
@@ -56,7 +59,10 @@ const CartIcon = () => {
                     <p>{amount}</p>
                 </div>
             )}
-            {modal && <CartModal toggleModal={toggleModal} />}
+            {/* {modal && <CartModal toggleModal={toggleModal} />} */}
+            <AnimatePresence mode='wait'>
+                {modal && <CartModal toggleModal={toggleModal} />}  
+            </AnimatePresence>
         </div>
     )
 }

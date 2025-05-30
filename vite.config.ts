@@ -78,28 +78,29 @@ export default defineConfig(({ mode }) => {
       },
       exclude: ['chunk-35Z6LCG7', 'chunk-A26WW3DX'],
     },
-    build: {
-      target: 'es2020',
-      outDir: path.resolve(__dirname, './build'),
-      assetsDir: 'assets',
-      rollupOptions: {
-        output: {
-          chunkFileNames: 'assets/js/[name].[hash].js',
-          entryFileNames: 'assets/js/[name].[hash].js',
-          assetFileNames: (assetInfo) => {
-            if (/\.(woff2?|ttf|otf|eot)$/.test(assetInfo.name ?? '')) {
-              return 'assets/fonts/[name].[ext]';
-            }
-            if (/\.(png|jpe?g|gif|svg|webp)$/.test(assetInfo.name ?? '')) {
-              return 'assets/images/[name].[ext]';
-            }
-            if (/\.css$/.test(assetInfo.name ?? '')) {
-              return 'assets/css/[name].[hash].css';
-            }
-            return 'assets/[name].[ext]';
-          },
-        },
+   build: {
+  target: 'es2020',
+  outDir: 'dist',  
+  assetsDir: 'assets',
+  rollupOptions: {
+    output: {
+      chunkFileNames: 'assets/js/[name].[hash].js',
+      entryFileNames: 'assets/js/[name].[hash].js',
+      assetFileNames: (assetInfo) => {
+        if (/\.(woff2?|ttf|otf|eot)$/.test(assetInfo.name ?? '')) {
+          return 'assets/fonts/[name].[ext]';
+        }
+        if (/\.(png|jpe?g|gif|svg|webp)$/.test(assetInfo.name ?? '')) {
+          return 'assets/images/[name].[ext]';
+        }
+        if (/\.css$/.test(assetInfo.name ?? '')) {
+          return 'assets/css/[name].[hash].css';
+        }
+        return 'assets/[name].[ext]';
       },
     },
+  },
+},
+
   };
 });

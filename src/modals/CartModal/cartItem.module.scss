@@ -1,0 +1,137 @@
+@import "./mixins.scss";
+
+.cartItem {
+    position: relative;
+    padding-block: 1.5rem;
+    width: 100%;
+    display: grid;
+    gap: 8px;
+    grid-template-areas:
+        "img"
+        "info"
+        "price";
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #ababab;
+    }
+    @media (max-width: 768px) {
+        grid-template-areas:
+            "img info"
+            "price price";
+        grid-template-columns: 1fr 2fr;
+    }
+    @media (min-width: 768px) {
+        gap: 16px;
+        grid-template-columns: 180px 2fr;
+        grid-template-areas:
+            "img info"
+            "img price";
+    }
+}
+
+.cartItemImage {
+  grid-area: img;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover; 
+
+  @media (min-width: 768px) {
+    height: 240px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 180px;
+    height: 240px;
+  }
+}
+
+.cartItemData {
+  grid-area: info;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cartItemDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.author {
+  margin-bottom: 1rem;
+}
+
+.productCode {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #e4e5e5;
+  border-radius: 12px;
+}
+
+.inStock {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inStockText {
+  color: #008000; 
+}
+
+.cartItemPrice {
+  grid-area: price;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+
+  @media (min-width: 1280px) {
+    justify-content: flex-end;
+  }
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyButton {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyDisplay {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ababab;
+  border-radius: 0.5rem;
+
+  @media (min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.priceText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+

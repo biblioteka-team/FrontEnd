@@ -1,0 +1,136 @@
+[
+	{
+		"categoryName__ukr": "Фільтри",
+		"categoryName__eng": "Filters",
+		"filters__ukr": ["Новинки", "Акції", "Бестселери"],
+		"filters__eng": ["New Arrivals", "Promotions", "Bestsellers"]
+	},
+	{
+		"categoryName__ukr": "Мова",
+		"categoryName__eng": "Language",
+		"filters__ukr": ["Українська", "Англійська"],
+		"filters__eng": ["Ukrainian", "English"]
+	},
+	{
+		"categoryName__ukr": "Жанр",
+		"categoryName__eng": "Genre",
+		"subCategories": [
+			{
+				"subCategoryName__ukr": "Художня література",
+				"subCategoryName__eng": "Fiction",
+				"filters__ukr": [
+					"Романи",
+					"Любовні романи",
+					"Історичні романи",
+					"Детективні романи",
+					"Наукова фантастика",
+					"Фентезі",
+					"Психологічні романи",
+					"Поезія"
+				],
+				"filters__eng": [
+					"Novels",
+					"Romance Novels",
+					"Historical Novels",
+					"Detective Novels",
+					"Science Fiction",
+					"Fantasy",
+					"Psychological Novels",
+					"Poetry"
+				]
+			},
+			{
+				"subCategoryName__ukr": "Нехудожня література",
+				"subCategoryName__eng": "Non-Fiction",
+				"filters__ukr": [
+					"Біографії та мемуари",
+					"Історія",
+					"Наука і техніка",
+					"Філософія",
+					"Психологія",
+					"Економіка і бізнес",
+					"Мистецтво і культура",
+					"Подорожі і туризм",
+					"Кулінарія"
+				],
+				"filters__eng": [
+					"Biographies and Memoirs",
+					"History",
+					"Science and Technology",
+					"Philosophy",
+					"Psychology",
+					"Economics and Business",
+					"Art and Culture",
+					"Travel and Tourism",
+					"Cooking"
+				]
+			},
+			{
+				"subCategoryName__ukr": "Дитяча література",
+				"subCategoryName__eng": "Children's Literature",
+				"filters__ukr": [
+					"Казки",
+					"Розповіді для дошкільнят",
+					"Книги для молодшого шкільного віку",
+					"Підліткова література",
+					"Освітні книги"
+				],
+				"filters__eng": [
+					"Fairy Tales",
+					"Stories for Preschoolers",
+					"Books for Primary School Age",
+					"Teen Literature",
+					"Educational Books"
+				]
+			},
+			{
+				"subCategoryName__ukr": "Навчальна література",
+				"subCategoryName__eng": "Educational Literature",
+				"filters__ukr": ["Підготовка до школи", "Підручники", "Посібники"],
+				"filters__eng": ["School Preparation", "Textbooks", "Manuals"]
+			},
+			{
+				"subCategoryName__ukr": "Самовдосконалення",
+				"subCategoryName__eng": "Self-Improvement",
+				"filters__ukr": [
+					"Мотиваційні книги",
+					"Психологія саморозвитку",
+					"Здоров'я і фітнес"
+				],
+				"filters__eng": [
+					"Motivational Books",
+					"Self-Development Psychology",
+					"Health and Fitness"
+				]
+			},
+			{
+				"subCategoryName__ukr": "Спеціалізована література",
+				"subCategoryName__eng": "Specialized Literature",
+				"filters__ukr": [
+					"Медична література",
+					"Правознавство",
+					"Технічна література",
+					"Інформаційні технології"
+				],
+				"filters__eng": [
+					"Medical Literature",
+					"Law",
+					"Technical Literature",
+					"Information Technology"
+				]
+			}
+		]
+	},
+	{
+		"categoryName__ukr": "Вік",
+		"categoryName__eng": "Age",
+		"filters__ukr": ["Для дітей", "Для дорослих"],
+		"filters__eng": ["For Children", "For Adults"]
+	},
+	{
+		"categoryName__ukr": "Тип обкладинки",
+		"categoryName__eng": "Cover Type",
+		"filters__ukr": ["Тверда", "М’яка", "Інтегральна"],
+		"filters__eng": ["Hardcover", "Softcover", "Integral"]
+	}
+]

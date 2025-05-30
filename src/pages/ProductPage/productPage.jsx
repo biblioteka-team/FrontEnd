@@ -4,12 +4,12 @@ import { useState } from 'react'
 import Modal from 'react-modal'
 import { useParams } from 'react-router-dom'
 import { useGetBookInfoQuery } from '../../redux/productPageSlice'
-import globalStyles from '../../style.ts'
 import Button from '../../ui/Button/index.jsx'
 import IconStatusFalse from './ProductStatusItemFalse.svg'
 import IconStatusTrue from './ProductStatusItemTrue.svg'
 import IconClose from './close.svg'
 import ProductDescription from './productDescription'
+import globalStyles from '../../style.ts'
 import styles from './productPage.module.scss'
 
 const ProductPage = () => {

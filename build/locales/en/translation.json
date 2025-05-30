@@ -1,0 +1,16 @@
+{
+    "main": {
+      "hero": "Book Shop - your guide to a world of unforgettable adventures and unique stories. Our collection includes everything from classic masterpieces to the latest bestsellers. Let words become your companions, and books your best friends. Welcome to our store, where every page is a new opportunity to discover something incredible!",
+      "navlinks": {
+        "home": "Home",
+        "catalog": "Catalog",
+        "aboutUs": "About Us",
+        "topBooks": "Top Books",
+        "stock": "Stock"
+      },
+      "searchField": "Search",
+      "newBooks":"New",
+      "salesBooks":"Sale",
+      "bestellersBooks":"Bestsellers"
+    }
+  }
