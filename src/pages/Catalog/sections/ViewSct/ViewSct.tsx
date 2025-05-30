@@ -4,13 +4,6 @@ import { useCatalog } from 'pages/Catalog/hooks/useCatalog'
 import s from './ViewSct.module.scss'
 
 export default function ViewSct() {
-  // const queryParams = {
-  //   page: 1,
-  //   size: 10
-  // }
-
-  // const { data, isLoading } = useGetAllBooksQry(queryParams)
-  // console.log('ViewSct data:', data)
   const { books, isLoading } = useCatalog()
 
   return (
@@ -21,6 +14,10 @@ export default function ViewSct() {
             <BookPreviewSkeleton key={index} className={s.item} />
           ))}
         </>
+      ) : books.length === 0 ? (
+        <div className={s.noItems}>
+          <p>Немає товарів</p>
+        </div>
       ) : (
         books.map(el => (
           <BookPreview key={el.id} contextValue={{ offer: el }} className={s.item}>
