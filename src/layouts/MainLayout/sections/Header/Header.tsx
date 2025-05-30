@@ -1,5 +1,5 @@
 import client from 'api/index.js'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useBreakpointMF } from 'react-responsive-tools'
 import { Link, useLocation } from 'react-router-dom'
 import SearchBar from "ui/SearchBar"
@@ -15,6 +15,15 @@ const Header = () => {
 	const isMedium = useBreakpointMF('md')
 	const [isLogin, setIsLogin] = useState<boolean>(!!client.AM.token)
 
+	useEffect(() => {
+		const handleLoginSuccess = () => {
+			setIsLogin(true)
+		}
+		window.addEventListener('loginSuccess', handleLoginSuccess)
+		return () => {
+			window.removeEventListener('loginSuccess', handleLoginSuccess)
+		}
+	}, [])
 	return (
 		<>
 			<header className={s.Header}>

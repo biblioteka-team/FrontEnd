@@ -32,10 +32,9 @@ const LoginModal = ({ className = '', toggleModal, toggleForm }: Props) => {
 
 					// Set authorization header
 					client.setHeader('Authorization', `Bearer ${token}`)
-
+					window.dispatchEvent(new Event('loginSuccess'))
 					setTimeout(() => {
 						toggleModal()
-						// window.location.reload()
 					}, 2000)
 				}
 			},
