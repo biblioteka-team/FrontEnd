@@ -2,8 +2,10 @@ import Icon from 'assets/icons/AllFiltersIcon.svg'
 import Drawer from 'components/Drawer'
 import { useState } from 'react'
 import s from './FilterDrawer.module.scss'
+import ClearAllFiltersBtn from './sections/ClearAllFiltersBtn'
 import Filters from './sections/Filters'
 import Genre from './sections/Genre'
+import Language from './sections/Language'
 
 export default function FilterDrawer() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
@@ -20,8 +22,9 @@ export default function FilterDrawer() {
       className={s.drawer}
       classNameContent={s.drawerContentInner}
     >
+      <ClearAllFiltersBtn />
       <Filters />
-      {/* <Language /> */}
+      <Language />
       <Genre />
       {/* <Age /> */}
       {/* <Author /> */}

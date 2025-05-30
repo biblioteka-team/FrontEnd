@@ -1,0 +1,37 @@
+@use 'react-responsive-tools' as *;
+
+.CheckedFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background-color: rgba(118, 118, 118, 0.2);
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 400px;
+
+  .removeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    color: #666;
+    font-size: 14px;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}

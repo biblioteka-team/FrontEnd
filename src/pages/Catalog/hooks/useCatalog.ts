@@ -34,8 +34,11 @@ export const useCatalog = () => {
     priceRange: urlParams.priceRange
   })
 
+
   // Update total pages when data changes
   useEffect(() => {
+    console.log('useCatalog data:', data);
+    
     if (data?.data?.totalPages) {
       dispatch(setTotalPages(data.data.totalPages))
     }

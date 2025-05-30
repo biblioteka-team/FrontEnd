@@ -1,4 +1,5 @@
 import cn from 'classnames'
+import { useCatalog } from 'pages/Catalog/hooks/useCatalog'
 import { useSelector } from 'react-redux'
 import { selectPagination } from '../../../../redux/catalogSlice'
 import { useUrlParams } from '../../hooks/useUrlParams'
@@ -11,6 +12,7 @@ interface Props {
 export default function PaginationSct({ className = '' }: Props) {
   const { totalPages } = useSelector(selectPagination)
   const { getParams, setParams } = useUrlParams()
+  const { books } = useCatalog()
   const { page } = getParams()
 
   const handlePageChange = (newPage: number) => {
@@ -72,7 +74,7 @@ export default function PaginationSct({ className = '' }: Props) {
     return pages
   }
 
-  if (totalPages <= 1) return null
+  if (books.length === 0 || totalPages <= 1) return null
 
   return (
     <section className={cn(s.PaginationSct, className)}>
