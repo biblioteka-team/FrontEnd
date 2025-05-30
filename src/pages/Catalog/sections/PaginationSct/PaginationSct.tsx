@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { useCatalog } from 'pages/Catalog/hooks/useCatalog'
 import { useSelector } from 'react-redux'
-import { selectPagination } from '../../../../redux/catalogSlice'
+import { selectPagination } from '../../../../redux/Catalog'
 import { useUrlParams } from '../../hooks/useUrlParams'
 import s from './PaginationSct.module.scss'
 

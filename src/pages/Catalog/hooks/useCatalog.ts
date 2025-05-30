@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   selectPagination,
   setTotalPages
-} from '../../../redux/catalogSlice'
+} from '../../../redux/Catalog'
 import { useUrlParams } from './useUrlParams'
 
 export const useCatalog = () => {

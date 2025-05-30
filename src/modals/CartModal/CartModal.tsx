@@ -1,12 +1,12 @@
+import CartItem from 'components/CartItem'
+import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateTotals, clearCart } from '../../redux/cartSlice'
-import CartItem from './CartItem'
+import { calculateTotals, clearCart } from '../../redux/Cart'
+import { RootState } from '../../redux/store'
 import stylesGlobal from '../../style'
-import styles from './cartModal.module.scss'
 import Button from '../../ui/Button'
-import { motion } from 'framer-motion'
-
+import styles from './cartModal.module.scss'
 const backdropVariants = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 }
@@ -17,12 +17,15 @@ const modalVariants = {
   visible: { opacity: 1, y: "0", scale: 1 },
   exit: { opacity: 0, y: "-50px", scale: 0.9 }
 }
+interface CartModalProps {
+  toggleModal: () => void
+}
 
-const CartModal = ({ toggleModal }) => {
+const CartModal = ({ toggleModal }: CartModalProps) => {
   const dispatch = useDispatch()
-  const cartItems = useSelector(state => state.cart.cartItems)
-  const amount = useSelector(state => state.cart.amount)
-  const total = useSelector(state => state.cart.total)
+  const cartItems = useSelector((state: RootState) => state.cart.cartItems)
+  const amount = useSelector((state: RootState) => state.cart.amount)
+  const total = useSelector((state: RootState) => state.cart.total)
 
   const handleClearCart = () => {
     dispatch(clearCart())
@@ -60,7 +63,7 @@ const CartModal = ({ toggleModal }) => {
               </div>
 
               <div className={styles.cartList}>
-                {cartItems.map(item => <CartItem key={item.id} {...item} />)}
+                {cartItems.map(item => <CartItem key={item.id} item={item} />)}
               </div>
 
               <div className={styles.cartTotalContainer}>

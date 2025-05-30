@@ -3,7 +3,7 @@ import closeSvg from 'assets/close.svg'
 import cn from 'classnames'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { calculateTotals } from '../../redux/cartSlice'
+import { calculateTotals } from '../../redux/Cart'
 import s from './AddToCartPopUp.module.scss'
 
 interface Props {

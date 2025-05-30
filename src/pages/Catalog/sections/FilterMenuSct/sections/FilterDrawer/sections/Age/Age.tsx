@@ -1,6 +1,6 @@
 import CheckBox from 'components/CheckBox'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectFilters, setAgeGroup } from '../../../../../../../../redux/catalogSlice'
+import { selectFilters, setAgeGroup } from '../../../../../../../../redux/Catalog'
 import s from './Age.module.scss'
 
 export default function Age() {

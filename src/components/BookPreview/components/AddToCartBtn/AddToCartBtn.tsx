@@ -3,7 +3,7 @@ import AddToCartPopUp from 'components/AddToCartPopUp'
 import { useBookPreviewContext } from 'components/BookPreview/context/BookPreviewContext'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../../../../redux/cartSlice'
+import { addToCart } from '../../../../redux/Cart'
 import s from './AddToCartBtn.module.scss'
 
 interface Props {

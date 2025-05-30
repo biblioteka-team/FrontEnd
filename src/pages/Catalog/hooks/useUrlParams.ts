@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
-import { AgeGroup, Language, Subcategory } from '../../../redux/catalogSlice'
+import { AgeGroup, Language, Subcategory } from '../../../redux/Catalog'
 
 export const useUrlParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()

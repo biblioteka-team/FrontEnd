@@ -1,7 +1,7 @@
 import CheckBox from 'components/CheckBox'
 import DropDown from 'components/DropDown'
 import { useUrlParams } from 'pages/Catalog/hooks/useUrlParams'
-import { Subcategory } from '../../../../../../../../redux/catalogSlice'
+import { Subcategory } from '../../../../../../../../redux/Catalog'
 import s from './Genre.module.scss'
 
 interface GenreCategory {
