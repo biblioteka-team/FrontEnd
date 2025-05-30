@@ -1,0 +1,53 @@
+@use 'react-responsive-tools' as *;
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.BookPreviewSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  >div {
+    background: #E5E5E5;
+    border-radius: 8px;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+.image {
+  height: 240px;
+  width: 100%;
+}
+
+.title {
+  height: 24px;
+  width: 80%;
+}
+
+.author {
+  height: 20px;
+  width: 60%;
+}
+
+.price {
+  height: 24px;
+  width: 40%;
+}
+
+.button {
+  height: 40px;
+  width: 100%;
+}

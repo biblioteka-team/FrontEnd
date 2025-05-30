@@ -1,0 +1,48 @@
+@use 'react-responsive-tools' as *;
+
+.FilterDrawer {
+
+  .openDrawerButton {
+    font-weight: 500;
+    font-size: 16px;
+    color: rgba(118, 118, 118, 1);
+    border: 1px solid rgba(171, 171, 171, 1);
+    border-radius: 12px;
+    width: 100%;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      object-fit: contain;
+    }
+  }
+
+  .drawer {
+    width: 100%;
+
+
+    @include for-md {
+      width: 400px;
+    }
+  }
+
+  .drawerContentInner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+}

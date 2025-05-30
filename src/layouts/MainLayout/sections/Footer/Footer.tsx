@@ -37,7 +37,7 @@ const Footer = () => {
 				<nav className={s.Nav}>
 					<div className={s.NavPrimary}>
 						<Link to="/">Головна</Link>
-						<Link to="/catalog">Каталог</Link>
+						<Link to="/catalog/page/1">Каталог</Link>
 						<Link to="/about">Про нас</Link>
 					</div>
 					<div className={s.NavSecondary}>

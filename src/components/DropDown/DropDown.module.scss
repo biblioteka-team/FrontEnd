@@ -1,0 +1,50 @@
+@use 'react-responsive-tools' as *;
+
+.DropDown {
+  width: 100%;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 12px;
+  background: rgba(233, 233, 233, 0.54);
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(233, 233, 233, 1);
+  }
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: rotate(180deg);
+  }
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(233, 233, 233, 0.54);
+
+
+
+  &.visible {
+    max-height: 500px;
+    transition: max-height 0.5s ease-in-out;
+  }
+}

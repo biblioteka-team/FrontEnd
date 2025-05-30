@@ -43,7 +43,7 @@ export async function getAllBooks(
   config?: AxiosRequestConfig
 ): Promise<TSuccess> {
   try {
-    const response = await this.client.get<TSuccess>('/books', {
+    const response = await this.client.get<TSuccess>('/books/search', {
       ...config,
       signal,
       params,

@@ -1,0 +1,16 @@
+@use 'react-responsive-tools' as *;
+
+
+.Genre {
+  .title {
+    font-weight: 500;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 1);
+  }
+
+  .dropDownContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
