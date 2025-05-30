@@ -1,13 +1,13 @@
 import { Route, Routes } from 'react-router-dom'
-import MainLayout from './layouts/MainLayout'
+import MainLayout from './layouts/MainLayout/index.js'
 import NotFoundLayout from './layouts/NotFoundLayout/index.js'
 import NotFoundPage from './pages/404NotFound/index.js'
-import AboutUs from './pages/aboutUs/aboutUs'
-import Catalog from './pages/Catalog'
-import HomePage from './pages/HomePage'
-import ProductPage from './pages/ProductPage/productPage'
-import Sales from './pages/sales/sales'
-import TopBooks from './pages/topBooks/topBooks'
+import AboutUs from './pages/aboutUs/aboutUs.jsx'
+import Catalog from './pages/Catalog/index.js'
+import HomePage from './pages/HomePage/index.js'
+import ProductPage from './pages/ProductPage/productPage.jsx'
+import Sales from './pages/sales/sales.jsx'
+import TopBooks from './pages/topBooks/topBooks.jsx'
 
 const App = () => {
 	return (
@@ -29,7 +29,7 @@ const App = () => {
 				}
 			/>
 		</Routes>
-	);
-};
+	)
+}
 
-export default App;
+export default App

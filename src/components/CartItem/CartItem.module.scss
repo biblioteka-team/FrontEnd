@@ -1,6 +1,6 @@
 @use 'react-responsive-tools' as *;
 
-@import "../../modals/CartModal/mixins.scss";
+@use "../../modals/CartModal/mixins.scss";
 
 .cartItem {
   position: relative;

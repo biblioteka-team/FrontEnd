@@ -20,6 +20,8 @@ const LoginModal = ({ className = '', toggleModal, toggleForm }: Props) => {
 		{ email: '', password: '' },
 		{
 			onSuccess: (response) => {
+				console.log('Login successful:', response)
+
 				const token = response.data.token
 				if (token) {
 					// Save token to AuthManager
@@ -28,15 +30,12 @@ const LoginModal = ({ className = '', toggleModal, toggleForm }: Props) => {
 						refresh: token
 					})
 
-					// Verify token was saved
-					console.log('Saved token:', client.AM.token)
-
 					// Set authorization header
 					client.setHeader('Authorization', `Bearer ${token}`)
 
 					setTimeout(() => {
 						toggleModal()
-						window.location.reload()
+						// window.location.reload()
 					}, 2000)
 				}
 			},

@@ -36,5 +36,11 @@ export const bindAllApi = (thisArg: RESTClient) => {
       put: routes.admins.putAdministrator.bind(thisArg), // Оновлення Адміністратора.
       patch: routes.admins.patchAdministrator.bind(thisArg), // Оновлення частини Адміністратора.
     },
-  };
+    cart: {
+      addToCart: routes.cart.addToCart.bind(thisArg), // Додавання товару до кошика.
+      getCart: routes.cart.getCart.bind(thisArg), // Отримання кошика користувача.
+      removeFromCart: routes.cart.removeFromCart.bind(thisArg), // Видалення товару з кошика.
+      clearCart: routes.cart.clearCart.bind(thisArg), // Очищення кошика.
+    },
+      };
 };
