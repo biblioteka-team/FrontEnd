@@ -1,12 +1,13 @@
 import style from './selectInput.module.scss';
 
-const SelectInput = ({ options, value, onChange, placeholder }) => {
+const SelectInput = ({ name, options, value, onChange, placeholder }) => {
   return (
     <div className={style.selectInput_wrapper}>
       <select
+        name={name}
         className={style.selectInput_select}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={onChange}
       >
         <option value="" disabled>
           {placeholder}

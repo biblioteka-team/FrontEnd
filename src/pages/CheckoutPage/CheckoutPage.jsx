@@ -25,6 +25,10 @@ const OrderPage = () => {
               initialValues={{
                 firstName: '',
                 lastName: '',
+                middleName: '',
+                phoneNumber: '',
+                email: '',
+                city: '',
               }}
 
               validationSchema={validationSchema}
