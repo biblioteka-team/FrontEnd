@@ -1,0 +1,47 @@
+@mixin figma-shadow($x: 3px, $y: 3px, $blur: 8px, $color: rgba(160, 160, 160, 0.2), $radius: 12px) {
+  box-shadow: #{$x} #{$y} #{$blur} $color;
+  border-radius: $radius;
+}
+
+.checkoutPage {
+  position: relative;
+
+  &_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+
+  &_header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  &_content {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    gap: 94px;
+  }
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    width: 722px;
+    gap: 20px;
+     @include figma-shadow()
+  }
+
+   &_order {
+    display: flex;
+    width: 382px;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #fff;
+    @include figma-shadow()}
+
+ 
+}
