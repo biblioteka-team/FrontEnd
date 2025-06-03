@@ -2,12 +2,14 @@ import style from './checkoutPage.module.scss';
 import stylesGlobal from './../../style';
 import FormSection from '../../components/FormSection';
 import SelectInput from '../../components/SelectInput';
+import PaymentMethodField from '../../components/PaymentMethodField';
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Введи ім’я'),
   lastName: Yup.string().required('Введи прізвище'),
+  paymentMethod: Yup.string().required('Оберіть метод оплати'),
 })
 const OrderPage = () => {
   return (
@@ -29,6 +31,7 @@ const OrderPage = () => {
                 phoneNumber: '',
                 email: '',
                 city: '',
+                paymentMethod: '',
               }}
 
               validationSchema={validationSchema}
@@ -64,6 +67,10 @@ const OrderPage = () => {
                       { value: 'lviv', label: 'Львів' },
                       { value: 'kharkiv', label: 'Харків' },
                     ]}
+                  />
+
+                  <PaymentMethodField
+                  
                   />
                 </Form>
               )}
