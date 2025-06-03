@@ -5,6 +5,7 @@ import SelectInput from '../../components/SelectInput';
 import PaymentMethodField from '../../components/PaymentMethodField';
 import { Formik, Form } from 'formik'
 import * as Yup from 'yup'
+import CommentField from '../../components/CommentField';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('Введи ім’я'),
@@ -69,9 +70,8 @@ const OrderPage = () => {
                     ]}
                   />
 
-                  <PaymentMethodField
-                  
-                  />
+                  <PaymentMethodField />
+                  <CommentField/>
                 </Form>
               )}
 
