@@ -2,13 +2,17 @@ import { useUrlParams } from '../../hooks/useUrlParams'
 import s from './CheckedFilters.module.scss'
 
 const LANGUAGE_LABELS: Record<string, string> = {
-  UK: 'Українська',
-  EN: 'Англійська'
+  uk: 'Українська',
+  en: 'Англійська'
 }
 
 const AGE_GROUP_LABELS: Record<string, string> = {
   KIDS: 'Дитяча',
   ADULT: 'Доросла'
+}
+const AGE_RESTRICTION_LABELS: Record<number, string> = {
+  0: 'Для дітей',
+  18: 'Для дорослих'
 }
 const SUBCATEGORY_LABELS: Record<string, string> = {
   ROMANCE: 'Романи',
@@ -46,17 +50,17 @@ const SUBCATEGORY_LABELS: Record<string, string> = {
 
 export default function CheckedFilters() {
   const { getParams, setParams } = useUrlParams()
-  const { language, subcategories, author, ageGroup, priceRange } = getParams()
+  const { languages, subcategories, author, ageRestriction,  minPrice, maxPrice } = getParams()
 
-  const handleRemoveFilter = (type: string, value?: string) => {
+ const handleRemoveFilter = (type: string, value?: string | number) => {
     const currentParams = getParams()
 
     switch (type) {
-      case 'language':
-        if (value && currentParams.language) {
+      case 'languages':
+        if (value && currentParams.languages) {
           setParams({
             ...currentParams,
-            language: currentParams.language.filter(lang => lang !== value)
+            languages: currentParams.languages.filter(lang => lang !== value)
           })
         }
         break
@@ -74,16 +78,22 @@ export default function CheckedFilters() {
           author: undefined
         })
         break
-      case 'ageGroup':
+      case 'ageRestriction':
         setParams({
           ...currentParams,
-          ageGroup: undefined
+          ageRestriction: null as any
         })
         break
-      case 'priceRange':
+      case 'minPrice':
         setParams({
           ...currentParams,
-          priceRange: undefined
+          minPrice: 1,
+        })
+        break
+      case 'maxPrice':
+        setParams({
+          ...currentParams,
+          maxPrice: 10000, 
         })
         break
     }
@@ -91,11 +101,11 @@ export default function CheckedFilters() {
 
   return (
     <section className={s.CheckedFilters}>
-      {language?.map(lang => (
+      {languages?.map(lang => (
         <div key={lang} className={s.filter}>
           <span>{LANGUAGE_LABELS[lang]}</span>
           <button
-            onClick={() => handleRemoveFilter('language', lang)}
+            onClick={() => handleRemoveFilter('languages', lang)}
             className={s.removeButton}
           >
             ✕
@@ -127,11 +137,11 @@ export default function CheckedFilters() {
         </div>
       )}
 
-      {ageGroup && (
+       {typeof ageRestriction === 'number' && (
         <div className={s.filter}>
-          <span>{AGE_GROUP_LABELS[ageGroup]}</span>
+          <span>{AGE_RESTRICTION_LABELS[ageRestriction]}</span>
           <button
-            onClick={() => handleRemoveFilter('ageGroup')}
+            onClick={() => handleRemoveFilter('ageRestriction')}
             className={s.removeButton}
           >
             ✕
@@ -139,13 +149,24 @@ export default function CheckedFilters() {
         </div>
       )}
 
-      {priceRange && (
+      {minPrice !== undefined && minPrice !== 1 && (
         <div className={s.filter}>
-          <span>
-            Ціна: {priceRange.min} - {priceRange.max} грн
-          </span>
+          <span>Від: {minPrice} грн</span>
           <button
-            onClick={() => handleRemoveFilter('priceRange')}
+            onClick={() => handleRemoveFilter('minPrice')}
+            className={s.removeButton}
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+     
+      {maxPrice !== undefined && maxPrice !== 10000 && (
+        <div className={s.filter}>
+          <span>До: {maxPrice} грн</span>
+          <button
+            onClick={() => handleRemoveFilter('maxPrice')}
             className={s.removeButton}
           >
             ✕

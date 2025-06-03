@@ -66,6 +66,6 @@ export interface TListMeta<T> {
   author?: string; // Отримання даних за автором
   category?: string; // Отримання даних за категорією
   price?: number;  // Отримання даних за ціною
-  language?: string;  // Отримання даних за мовою
+  languages?: string;  // Отримання даних за мовою
   subcategories?: TAPIFilters<T>; // Фільтри для даних
 }

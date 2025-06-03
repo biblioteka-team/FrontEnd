@@ -2,25 +2,25 @@ import CheckBox from 'components/CheckBox'
 import { useUrlParams } from '../../../../../../hooks/useUrlParams'
 import s from './Language.module.scss'
 
-type LanguageType = 'UK' | 'EN'
+export type Language = 'uk' | 'en'
 
 export default function Language() {
   const { getParams, setParams } = useUrlParams()
-  const { language: selectedLanguages = [] } = getParams()
+  const { languages: selectedLanguages = [] } = getParams()
 
-  const handleLanguageToggle = (lang: LanguageType) => {
+  const handleLanguageToggle = (lang: Language) => {
     const params = getParams()
-    const current = params.language || []
-
+    const current = params.languages || []
+    
     if (current.includes(lang)) {
       setParams({
         ...params,
-        language: current.filter(l => l !== lang)
+        languages: current.filter(l => l !== lang)
       })
     } else {
       setParams({
         ...params,
-        language: [...current, lang]
+        languages: [...current, lang]
       })
     }
   }
@@ -30,13 +30,13 @@ export default function Language() {
       <h3>Мова</h3>
       <CheckBox
         text="Українська"
-        checked={selectedLanguages.includes('UK')}
-        onChange={() => handleLanguageToggle('UK')}
+        checked={selectedLanguages.includes('uk')}
+        onChange={() => handleLanguageToggle('uk')}
       />
       <CheckBox
         text="Англійська"
-        checked={selectedLanguages.includes('EN')}
-        onChange={() => handleLanguageToggle('EN')}
+        checked={selectedLanguages.includes('en')}
+        onChange={() => handleLanguageToggle('en')}
       />
     </section>
   )

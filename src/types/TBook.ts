@@ -18,7 +18,7 @@ export interface TBookBook {
   ageRestriction: number
   price: number
   quantity: number
-  language: string
+  languages: string[]
   images: TImage[]
 }
 

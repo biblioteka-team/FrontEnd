@@ -1,45 +1,48 @@
 import { useSearchParams } from 'react-router-dom'
-import { AgeGroup, Language, Subcategory } from '../../../redux/Catalog'
-
+import { Language, Subcategory } from '../../../redux/Catalog'
+import { AgeRestriction } from '../sections/FilterMenuSct/sections/FilterDrawer/sections/Age/Age'
 export const useUrlParams = () => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const getParams = () => ({
     page: Number(searchParams.get('page')) || 1,
-    language: searchParams.getAll('language') as Language[],
+    languages: searchParams.getAll('languages') as Language[],
     subcategories: searchParams.getAll('subcategories') as Subcategory[],
-    ageGroup: searchParams.get('ageGroup') as AgeGroup | undefined,
+    ageRestriction: searchParams.get('ageRestriction') 
+      ? Number(searchParams.get('ageRestriction')) as AgeRestriction 
+      : undefined,
     author: searchParams.get('author') || undefined,
-    priceRange: searchParams.get('priceRange') ? 
-      JSON.parse(searchParams.get('priceRange')!) : undefined
+    minPrice: searchParams.get('min') ? Number(searchParams.get('min')) : undefined,
+    maxPrice: searchParams.get('max') ? Number(searchParams.get('max')) : undefined
   })
 
   const setParams = (params: Partial<{
     page: number
-    language: Language[]
+    languages: Language[]
     subcategories: Subcategory[]
-    ageGroup: AgeGroup
+    ageRestriction: AgeRestriction
     author: string
-    priceRange: { min: number; max: number }
+    minPrice: number | null
+    maxPrice: number | null
   }>) => {
     const newParams = new URLSearchParams(searchParams)
     
     if (params.page !== undefined) {
       newParams.set('page', params.page.toString())
     }
-    if (params.language !== undefined) {
-      newParams.delete('language')
-      params.language.forEach(lang => newParams.append('language', lang))
+    if (params.languages !== undefined) {
+      newParams.delete('languages')
+      params.languages.forEach(lang => newParams.append('languages', lang))
     }
     if (params.subcategories !== undefined) {
       newParams.delete('subcategories')
       params.subcategories.forEach(sub => newParams.append('subcategories', sub))
     }
-    if (params.ageGroup !== undefined) {
-      if (params.ageGroup) {
-        newParams.set('ageGroup', params.ageGroup)
+   if (params.ageRestriction !== undefined) {
+      if (params.ageRestriction !== null) {
+        newParams.set('ageRestriction', params.ageRestriction.toString())
       } else {
-        newParams.delete('ageGroup')
+        newParams.delete('ageRestriction')
       }
     }
     if (params.author !== undefined) {
@@ -49,11 +52,18 @@ export const useUrlParams = () => {
         newParams.delete('author')
       }
     }
-    if (params.priceRange !== undefined) {
-      if (params.priceRange) {
-        newParams.set('priceRange', JSON.stringify(params.priceRange))
+     if (params.minPrice !== undefined) {
+      if (params.minPrice !== null) {
+        newParams.set('min', params.minPrice.toString())
       } else {
-        newParams.delete('priceRange')
+        newParams.delete('min')
+      }
+    }
+    if (params.maxPrice !== undefined) {
+      if (params.maxPrice !== null) {
+        newParams.set('max', params.maxPrice.toString())
+      } else {
+        newParams.delete('max')
       }
     }
 
