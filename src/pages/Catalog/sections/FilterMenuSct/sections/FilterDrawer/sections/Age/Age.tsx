@@ -1,17 +1,28 @@
 import CheckBox from 'components/CheckBox'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectFilters, setAgeGroup } from '../../../../../../../../redux/Catalog'
+import { useUrlParams } from '../../../../../../hooks/useUrlParams'
 import s from './Age.module.scss'
 
-export default function Age() {
-  const dispatch = useDispatch()
-  const { ageGroup } = useSelector(selectFilters)
+export type AgeRestriction = 0 | 18 // 0 for children, 18 for adults
 
-  const handleAgeToggle = (group: 'ADULT' | 'CHILDREN') => {
-    if (ageGroup === group) {
-      dispatch(setAgeGroup(undefined))
+export default function Age() {
+  const { getParams, setParams } = useUrlParams()
+  const { ageRestriction } = getParams()
+
+  const handleAgeToggle = (age: AgeRestriction) => {
+    const params = getParams()
+    
+    if (params.ageRestriction === age) {
+      // If same age is clicked, remove the filter
+      setParams({
+        ...params,
+        ageRestriction: undefined
+      })
     } else {
-      dispatch(setAgeGroup(group))
+      // Set new age restriction
+      setParams({
+        ...params,
+        ageRestriction: age
+      })
     }
   }
 
@@ -20,13 +31,13 @@ export default function Age() {
       <h3 className={s.title}>Вік</h3>
       <CheckBox
         text="Для дітей"
-        checked={ageGroup === 'CHILDREN'}
-        onChange={() => handleAgeToggle('CHILDREN')}
+        checked={ageRestriction === 0}
+        onChange={() => handleAgeToggle(0)}
       />
       <CheckBox
         text="Для дорослих"
-        checked={ageGroup === 'ADULT'}
-        onChange={() => handleAgeToggle('ADULT')}
+        checked={ageRestriction === 18}
+        onChange={() => handleAgeToggle(18)}
       />
     </section>
   )

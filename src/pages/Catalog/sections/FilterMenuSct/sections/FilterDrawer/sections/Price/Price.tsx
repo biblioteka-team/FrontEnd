@@ -13,12 +13,21 @@ interface PriceValues {
 
 export default function Price() {
   const { getParams, setParams } = useUrlParams()
-  const { priceRange } = getParams()
+  const { minPrice, maxPrice } = getParams()
 
+  // Setting the initial values
   const [values, setValues] = useState<PriceValues>({
-    min: priceRange?.min || MIN_PRICE,
-    max: priceRange?.max || MAX_PRICE
+    min: minPrice === undefined ? MIN_PRICE : minPrice,
+    max: maxPrice === undefined ? MAX_PRICE : maxPrice
   })
+
+  // This effect tracks changes to URL parameters
+  useEffect(() => {
+    setValues({
+      min: minPrice === undefined ? MIN_PRICE : minPrice,
+      max: maxPrice === undefined ? MAX_PRICE : maxPrice
+    })
+  }, [minPrice, maxPrice])
 
   const handleSliderChange = (type: 'min' | 'max') => (event: ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value)
@@ -84,13 +93,19 @@ export default function Price() {
   useEffect(() => {
     if (values.min !== '' && values.max !== '') {
       const timer = setTimeout(() => {
-        setParams({
-          ...getParams(),
-          priceRange: {
-            min: Number(values.min),
-            max: Number(values.max)
-          }
-        })
+        const min = Number(values.min)
+        const max = Number(values.max)
+        
+        // Check if the values ​​are different from the current URL parameters
+        const { minPrice: currentMin, maxPrice: currentMax } = getParams()
+        
+        if (min !== currentMin || max !== currentMax) {
+          setParams({
+            ...getParams(),
+            minPrice: min !== MIN_PRICE ? min : null,
+            maxPrice: max !== MAX_PRICE ? max : null
+          })
+        }
       }, 300)
 
       return () => clearTimeout(timer)

@@ -5,6 +5,7 @@ import {
   selectPagination,
   setTotalPages
 } from '../../../redux/Catalog'
+
 import { useUrlParams } from './useUrlParams'
 
 export const useCatalog = () => {
@@ -14,11 +15,12 @@ export const useCatalog = () => {
   const urlParams = getParams()
   
   const prevFiltersRef = useRef({
-    language: urlParams.language,
+    languages: urlParams.languages,
     subcategories: urlParams.subcategories,
     author: urlParams.author,
-    ageGroup: urlParams.ageGroup,
-    priceRange: urlParams.priceRange
+    ageRestriction: urlParams.ageRestriction,
+     minPrice: urlParams.minPrice,
+    maxPrice: urlParams.maxPrice
   })
 
   // Convert 1-based page to 0-based for API
@@ -27,11 +29,12 @@ export const useCatalog = () => {
   const { data, isLoading, refetch } = useGetAllBooksQry({
     page: apiPage,
     size: pageSize,
-    language: urlParams.language?.join(','),
+    languages: urlParams.languages?.length ? urlParams.languages.join(',') : undefined,
     subcategories: urlParams.subcategories?.join(','),
     author: urlParams.author,
-    ageGroup: urlParams.ageGroup,
-    priceRange: urlParams.priceRange
+    ageRestriction: urlParams.ageRestriction,
+     minPrice: urlParams.minPrice,
+    maxPrice: urlParams.maxPrice
   })
 
 
@@ -47,21 +50,22 @@ export const useCatalog = () => {
   // Ефект для відстеження змін фільтрів та URL параметрів
   useEffect(() => {
     const currentFilters = {
-      language: urlParams.language,
+      languages: urlParams.languages,
       subcategories: urlParams.subcategories,
       author: urlParams.author,
-      ageGroup: urlParams.ageGroup,
-      priceRange: urlParams.priceRange
+      ageRestriction: urlParams.ageRestriction,
+       minPrice: urlParams.minPrice,
+    maxPrice: urlParams.maxPrice
     }
 
     const prevFilters = prevFiltersRef.current
     
     const hasFiltersChanged = 
-      JSON.stringify(prevFilters.language) !== JSON.stringify(currentFilters.language) ||
+      JSON.stringify(prevFilters.languages) !== JSON.stringify(currentFilters.languages) ||
       JSON.stringify(prevFilters.subcategories) !== JSON.stringify(currentFilters.subcategories) ||
-      prevFilters.author !== currentFilters.author ||
-      prevFilters.ageGroup !== currentFilters.ageGroup ||
-      JSON.stringify(prevFilters.priceRange) !== JSON.stringify(currentFilters.priceRange)
+      prevFilters.ageRestriction !== currentFilters.ageRestriction ||
+      prevFilters.minPrice !== currentFilters.minPrice ||
+      prevFilters.maxPrice !== currentFilters.maxPrice
 
     if (hasFiltersChanged) {
       prevFiltersRef.current = currentFilters
@@ -72,11 +76,12 @@ export const useCatalog = () => {
       })
     }
   }, [
-    urlParams.language,
+    urlParams.languages,
     urlParams.subcategories,
     urlParams.author,
-    urlParams.ageGroup,
-    urlParams.priceRange
+    urlParams.ageRestriction,
+    urlParams.minPrice,
+    urlParams.maxPrice
   ])
 
   // Окремий ефект для рефетчу при будь-яких змінах параметрів
@@ -84,11 +89,12 @@ export const useCatalog = () => {
     refetch()
   }, [
     urlParams.page,
-    urlParams.language,
+    urlParams.languages,
     urlParams.subcategories,
     urlParams.author,
-    urlParams.ageGroup,
-    urlParams.priceRange,
+    urlParams.ageRestriction,
+    urlParams.minPrice,
+    urlParams.maxPrice,
     refetch
   ])
 
