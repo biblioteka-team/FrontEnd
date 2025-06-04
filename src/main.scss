@@ -440,3 +440,14 @@ body.active-modal {
 		transform: translateX(0);
 	}
 }
+
+.form-section-title {
+	font-size: 1rem;
+	padding-bottom: 1.5rem;
+}
+
+.form-section-content {
+	display: flex;
+	flex-direction: column;
+	gap:1rem;
+}

@@ -18,14 +18,11 @@ const OrderPage = () => {
   return (
     <section className={style.checkoutPage}>
       <div className={style.checkoutPage_container}>
-
-        <div> breadcrumbs </div>
-
-        <h1 className={stylesGlobal.heading}>Оформлення замовлення</h1>
+        <div className={stylesGlobal.bodyRegular}> breadcrumbs </div>
+        <h1 className={`${stylesGlobal.heading} ${style.checkoutPage_header}`}>Оформлення замовлення</h1>
         <div className={style.checkoutPage_content}>
           {/* форма для заповнення */}
           <div className={style.checkoutPage_form}>
-
             <Formik
               initialValues={{
                 firstName: '',
@@ -43,43 +40,42 @@ const OrderPage = () => {
               }}
             >
               {({ errors, touched, handleChange, values }) => (
-                <Form className={style.checkoutPage_form_section}>
-                  <FormSection
-                    title="Дані для доставки"
-                    fields={[
-                      { name: 'firstName', placeholder: 'Введіть Ваше ім’я' },
-                      { name: 'lastName', placeholder: "Введіть Ваше прізвище" },
-                      { name: 'middleName', placeholder: "Введіть по батькові" },
-                      { name: 'phoneNumber', placeholder: "Введіть Ваш телефон" },
-                      { name: 'email', placeholder: "Email" },
-                    ]}
-                    values={values}
-                    touched={touched}
-                    errors={errors}
-                    handleChange={handleChange}
-                  />
+                <Form className={style.checkoutPage_formContainer}>
+                    <FormSection
+                      title="Дані для доставки"
+                      fields={[
+                        { name: 'firstName', placeholder: 'Введіть Ваше ім’я' },
+                        { name: 'lastName', placeholder: "Введіть Ваше прізвище" },
+                        { name: 'middleName', placeholder: "Введіть по батькові" },
+                        { name: 'phoneNumber', placeholder: "Введіть Ваш телефон" },
+                        { name: 'email', placeholder: "Email" },
+                      ]}
+                      values={values}
+                      touched={touched}
+                      errors={errors}
+                      handleChange={handleChange}
+                    />
 
-                  <SelectInput
-                    name="city"
-                    value={values.city}
-                    onChange={handleChange}
-                    placeholder="Введіть або оберіть місто"
-                    errorText={touched.city ? errors.city : ''}
-                    options={[
-                      { value: 'kyiv', label: 'Київ' },
-                      { value: 'lviv', label: 'Львів' },
-                      { value: 'kharkiv', label: 'Харків' },
-                    ]}
-                  />
+                    <SelectInput
+                      name="city"
+                      value={values.city}
+                      onChange={handleChange}
+                      placeholder="Введіть або оберіть місто"
+                      errorText={touched.city ? errors.city : ''}
+                      options={[
+                        { value: 'kyiv', label: 'Київ' },
+                        { value: 'lviv', label: 'Львів' },
+                        { value: 'kharkiv', label: 'Харків' },
+                      ]}
+                    />
 
-                  <PaymentMethodField />
+                    <PaymentMethodField />
 
-                  <CommentField />
+                    <CommentField />
                 </Form>
               )}
             </Formik>
           </div>
-
           {/* кошик */}
           <div className={style.checkoutPage_order}>
             <CheckoutSummary />
