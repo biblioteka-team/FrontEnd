@@ -1,21 +1,20 @@
 import { Field, ErrorMessage } from 'formik';
-
-const PaymentMethodField = () => {
+import style from './paymentMethodField.module.scss';
+import stylesGlobal from './../../style';
+const PaymentMethodField = ({ name, type, options, errorText }) => {
   return (
-    <div className="mb-4">
-      <label className="block font-semibold mb-2">Метод оплати</label>
+    <div className={style.paymentField}>
+      <label className={`${style.paymentField_label} ${stylesGlobal.bodyMedium}`}>Метод оплати</label>
 
-      <label className="block mb-1">
-        <Field type="radio" name="paymentMethod" value="card" />
-        <span className="ml-2">Оплата карткою</span>
-      </label>
-
-      <label className="block mb-1">
-        <Field type="radio" name="paymentMethod" value="cash" />
-        <span className="ml-2">Післяплата</span>
-      </label>
-
-      <ErrorMessage name="paymentMethod" component="div" className="text-red-500 text-sm" />
+      {options.map((option) => (
+        <label key={option} className="block mb-1">
+          <Field type={type} name={name} value={option} />
+          <span className="ml-2">{option}</span>
+        </label>
+      ))}
+      {errorText && (
+        <div className="text-red-500 text-sm">{errorText}</div>
+      )}
     </div>
   );
 };

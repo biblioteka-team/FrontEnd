@@ -2,5 +2,32 @@
     &_wrapper {
         position: relative;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &_heading {
+        margin-bottom: 1.5rem;
+    }
+
+    &_select {
+        width: 100%;
+        padding: 16px;
+        outline: none;
+        border-radius: 12px;
+        border: 2px solid rgb(171, 171, 171);
+        font-size: 16px;
+        background-color: #fff;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+    }
+
+    &_option {
+        padding: 10px;
+        font-size: 16px;
     }
 }

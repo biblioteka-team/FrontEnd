@@ -41,37 +41,44 @@ const OrderPage = () => {
             >
               {({ errors, touched, handleChange, values }) => (
                 <Form className={style.checkoutPage_formContainer}>
-                    <FormSection
-                      title="Дані для доставки"
-                      fields={[
-                        { name: 'firstName', placeholder: 'Введіть Ваше ім’я' },
-                        { name: 'lastName', placeholder: "Введіть Ваше прізвище" },
-                        { name: 'middleName', placeholder: "Введіть по батькові" },
-                        { name: 'phoneNumber', placeholder: "Введіть Ваш телефон" },
-                        { name: 'email', placeholder: "Email" },
-                      ]}
-                      values={values}
-                      touched={touched}
-                      errors={errors}
-                      handleChange={handleChange}
-                    />
+                  <FormSection
+                    title="Дані для доставки"
+                    fields={[
+                      { name: 'firstName', placeholder: 'Введіть Ваше ім’я' },
+                      { name: 'lastName', placeholder: "Введіть Ваше прізвище" },
+                      { name: 'middleName', placeholder: "Введіть по батькові" },
+                      { name: 'phoneNumber', placeholder: "Введіть Ваш телефон" },
+                      { name: 'email', placeholder: "Email" },
+                    ]}
+                    values={values}
+                    touched={touched}
+                    errors={errors}
+                    handleChange={handleChange}
+                  />
 
-                    <SelectInput
-                      name="city"
-                      value={values.city}
-                      onChange={handleChange}
-                      placeholder="Введіть або оберіть місто"
-                      errorText={touched.city ? errors.city : ''}
-                      options={[
-                        { value: 'kyiv', label: 'Київ' },
-                        { value: 'lviv', label: 'Львів' },
-                        { value: 'kharkiv', label: 'Харків' },
-                      ]}
-                    />
+                  <SelectInput
+                    title={'Доставка'}
+                    name="city"
+                    value={values.city}
+                    onChange={handleChange}
+                    placeholder="Введіть або оберіть місто"
+                    errorText={touched.city ? errors.city : ''}
+                    options={[
+                      { value: 'kyiv', label: 'Київ' },
+                      { value: 'lviv', label: 'Львів' },
+                      { value: 'kharkiv', label: 'Харків' },
+                    ]}
+                  />
 
-                    <PaymentMethodField />
+                  <PaymentMethodField
+                    name="paymentMethod"
+                    value={values.paymentMethod}
+                    type="radio"
+                    options={['Оплата карткою', 'Післяплата']}
+                    errorText={touched.paymentMethod ? errors.paymentMethod : ''}
+                  />
 
-                    <CommentField />
+                  <CommentField />
                 </Form>
               )}
             </Formik>

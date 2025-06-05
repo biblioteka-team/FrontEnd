@@ -29,7 +29,7 @@
     display: flex;
     flex-direction: column;
     padding: 1.5rem;
-    width: 722px;
+    min-width: 722px;
     gap: 20px;
     @include figma-shadow();
   }

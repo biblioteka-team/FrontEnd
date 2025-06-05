@@ -1,0 +1,9 @@
+.paymentField {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    
+    &_label {
+        display: block;
+    }
+}
