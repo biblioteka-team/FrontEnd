@@ -1,9 +1,9 @@
 import { Field } from 'formik';
-
+import style from './commentField.module.scss';
 const CommentField = () => {
   return (
-    <div className="mb-4">
-      <label htmlFor="comment" className="block font-semibold mb-2">Коментар</label>
+    <div className={style.commentField}>
+    <label htmlFor="comment" className={style.commentField_label}>Коментар</label>
 
       <Field
         as="textarea"

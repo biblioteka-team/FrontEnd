@@ -30,4 +30,18 @@
         padding: 10px;
         font-size: 16px;
     }
+
+    &_error {
+        color: red;
+        font-size: 14px;
+        margin-top: 0.5rem;
+    }
+
+    &_errorText {
+        position: absolute;
+        bottom: -20px;
+        left: 0;
+        color: red;
+        font-size: 14px;
+    }
 }

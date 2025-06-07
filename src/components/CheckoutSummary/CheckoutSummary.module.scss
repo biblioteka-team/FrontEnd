@@ -1,28 +1,70 @@
-.checkoutSummary {
-    &_orderHeader {
-        display: flex;
-        justify-content: space-between;
-    }
+@import "./../../main.scss";
 
-    &_orderChangeBtn {
+@mixin figma-shadow(
+  $x: 0px,
+  $y: 0px,
+  $blur: 8px,
+  $spread: 4px,
+  $color: rgba(160, 160, 160, 0.2),
+  $radius: 12px
+) {
+  box-shadow: #{$x} #{$y} #{$blur} #{$spread} #{$color};
+  border-radius: $radius;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+  padding-inline: 20px;
+  padding-bottom: 1.5rem;
+  @include figma-shadow();
+
+  &_header {
+    @extend .body-medium;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
+
+  &_changeBtn {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    padding-inline: 14px;
+    padding-block: 12px;
+    width: 141px;
     height: 50px;
     font-size: 1.2rem;
     font-weight: bold;
-    border: #FFD95A solid 2px;
+    border: #ffd95a solid 2px;
     border-radius: 8px;
     cursor: pointer;
 
     &:hover {
-      background-color: darken(#FFD95A, 10%);
+      background-color: darken(#ffd95a, 10%);
       transition: all 0.3s ease-in-out;
     }
   }
 
-  &_cartItemsContainer {
+  &_cart {
     display: flex;
+    flex-direction: column;
+  }
+
+  &_total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-top: 1px solid #ccc;
+    margin-top: 16px;
+
+    span {
+      color: #333;
+    }
+     
   }
 }

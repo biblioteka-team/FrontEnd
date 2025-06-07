@@ -1,0 +1,7 @@
+@import './../../main.scss';
+.commentField {
+    &_label {
+        @extend .body-medium;
+        margin-bottom: 0.5rem;
+    }
+}

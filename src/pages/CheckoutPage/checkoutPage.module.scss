@@ -4,8 +4,6 @@
 }
 
 .checkoutPage {
-  position: relative;
-
   &_container {
     display: flex;
     flex-direction: column;
@@ -32,12 +30,6 @@
     min-width: 722px;
     gap: 20px;
     @include figma-shadow();
-  }
-
-  &_formContainer {
-    display: flex;
-    flex-direction: column;
-    gap:40px;
   }
 
   &_order {

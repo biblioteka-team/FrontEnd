@@ -1,4 +1,4 @@
-import { Field, ErrorMessage } from 'formik';
+import { Field } from 'formik';
 import style from './paymentMethodField.module.scss';
 import stylesGlobal from './../../style';
 const PaymentMethodField = ({ name, type, options, errorText }) => {
@@ -7,7 +7,7 @@ const PaymentMethodField = ({ name, type, options, errorText }) => {
       <label className={`${style.paymentField_label} ${stylesGlobal.bodyMedium}`}>Метод оплати</label>
 
       {options.map((option) => (
-        <label key={option} className="block mb-1">
+        <label key={option} className={`${style.paymentField_option} ${stylesGlobal.bodyMedium}`}>
           <Field type={type} name={name} value={option} />
           <span className="ml-2">{option}</span>
         </label>
